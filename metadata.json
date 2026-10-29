@@ -1,0 +1,6 @@
+{
+  "name": "Phòng Thi Tin Học 9 — THCS Lý Tự Trọng",
+  "description": "Kiểm tra giữa kì I môn Tin học 9 - THCS Lý Tự Trọng (Năm học 2026 - 2027)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

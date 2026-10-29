@@ -1,0 +1,1059 @@
+# VAI TRÒ
+
+Bạn là chuyên gia phát triển ứng dụng web giáo dục, chuyên gia UI/UX, lập trình viên React/TypeScript và chuyên gia thiết kế hệ thống kiểm tra đánh giá môn Tin học cấp THCS theo Chương trình Giáo dục phổ thông 2018.
+
+Hãy xây dựng một web app hoàn chỉnh có tên:
+
+PHÒNG THI TIN HỌC – KIỂM TRA TRỰC TUYẾN THCS
+
+Đây là ứng dụng tổ chức kiểm tra Tin học trên máy tính dành cho học sinh THCS, đặc biệt là học sinh lớp 6.
+
+Tôi đã cung cấp 3 hình ảnh tham khảo. Hãy phân tích các hình ảnh và tái tạo giao diện theo đúng tinh thần thiết kế, bố cục, màu sắc, kích thước tương đối, vị trí các nút lệnh và cách điều hướng trong hình mẫu.
+
+Không chỉ tạo bản thiết kế tĩnh. Phải xây dựng ứng dụng có giao diện và các chức năng tương tác thực sự.
+
+# PHẦN 1. CÔNG NGHỆ
+
+Sử dụng các công nghệ sau:
+
+- React.
+- TypeScript.
+- Vite nếu môi trường hỗ trợ.
+- Tailwind CSS hoặc CSS thuần để xây dựng giao diện.
+- Lucide React để sử dụng biểu tượng.
+- LocalStorage để lưu trạng thái làm bài trên trình duyệt.
+- Có thể sử dụng thư viện phù hợp để xuất kết quả ra CSV hoặc Excel.
+
+Ưu tiên giải pháp đơn giản, ổn định, dễ triển khai, dễ chỉnh sửa và dễ sử dụng với giáo viên Tin học THCS.
+
+Không yêu cầu API key đối với các chức năng thi cơ bản.
+
+Không phụ thuộc vào máy chủ bên ngoài để thực hiện các chức năng làm bài, tính thời gian, lưu đáp án và chấm điểm cơ bản.
+
+Tổ chức mã nguồn thành các component rõ ràng, dễ bảo trì.
+
+# PHẦN 2. ĐỊNH HƯỚNG THIẾT KẾ
+
+Thiết kế giao diện bám sát 3 hình ảnh tham khảo.
+
+Phong cách tổng thể:
+- Hiện đại.
+- Thân thiện với học sinh THCS.
+- Màu sắc tươi sáng.
+- Gọn gàng, trực quan.
+- Có cảm giác như một phòng thi trực tuyến chuyên nghiệp.
+- Không sử dụng giao diện quản trị quá phức tạp.
+
+Bảng màu:
+
+- Xanh dương chủ đạo: #3478F6.
+- Tím chủ đạo: #7548E8.
+- Xanh lá: #16B886.
+- Cam: #F59A38.
+- Tím hồng: #C03BE8.
+- Nền xanh tím rất nhạt: #F2F4FF.
+- Trắng: #FFFFFF.
+- Chữ chính: #20283D.
+- Chữ phụ: #6B7280.
+
+Sử dụng nền gradient xanh nhạt sang tím hồng nhạt.
+
+Các thẻ nội dung có:
+- Nền trắng.
+- Bo góc khoảng 16–24px.
+- Viền mảnh màu xanh xám nhạt.
+- Bóng đổ nhẹ.
+- Khoảng cách giữa các thành phần hợp lý.
+
+Các nút lệnh:
+- Bo góc khoảng 10–14px.
+- Có trạng thái hover.
+- Có trạng thái focus dễ nhận biết.
+- Có phản hồi trực quan khi nhấn.
+- Không sử dụng hiệu ứng chuyển động quá mức.
+
+Font chữ ưu tiên Be Vietnam Pro hoặc Inter, có hỗ trợ tiếng Việt đầy đủ.
+
+Giao diện phải responsive, hiển thị tốt trên máy tính, laptop, máy tính bảng và điện thoại.
+
+Trên máy tính, ưu tiên bố cục tương tự hình ảnh gốc.
+
+# PHẦN 3. CẤU TRÚC ỨNG DỤNG
+
+Ứng dụng có 3 khu vực chính:
+
+1. Màn hình vào phòng thi.
+2. Màn hình làm bài.
+3. Màn hình kết quả sau khi nộp bài.
+
+Ngoài ra, tạo khu vực quản lý dành cho giáo viên để cấu hình đề thi, câu hỏi và đáp án.
+
+Phân biệt rõ giao diện học sinh với giao diện giáo viên.
+
+# PHẦN 4. MÀN HÌNH 1 – VÀO PHÒNG THI
+
+Thiết kế theo hình ảnh tham khảo số 1.
+
+Chia màn hình thành hai cột chính.
+
+## 4.1. Cột bên trái
+
+Phía trên là logo dạng biểu tượng màn hình máy tính có dấu kiểm.
+
+Tiêu đề lớn:
+
+PHÒNG THI TIN HỌC
+
+Sử dụng chữ in hoa, đậm, có hiệu ứng chuyển màu từ xanh dương sang tím.
+
+Dòng thông tin:
+
+Kiểm tra giữa học kì I · Tin học 6 · 45 phút · THCS Nguyễn Huệ
+
+Tên bài kiểm tra và thời lượng phải được cấu hình từ phần quản lý giáo viên.
+
+Tiếp theo là khu vực hướng dẫn gồm 4 bước, mỗi bước có số thứ tự nằm trong hình tròn xanh dương.
+
+Nội dung mặc định:
+
+1. Gõ số báo danh của em, chọn mã đề cô ghi trên bảng.
+2. Làm đủ 4 phần. Ô câu nào làm xong sẽ chuyển màu xanh.
+3. Không đóng trình duyệt. Hết giờ máy tự nộp bài.
+4. Làm xong bấm NỘP BÀI, chờ màn hình chúc mừng.
+
+Bên dưới hiển thị một hình robot thân thiện.
+
+Có thể sử dụng biểu tượng SVG tự thiết kế, CSS hoặc icon phù hợp. Không phụ thuộc vào hình ảnh có bản quyền từ nguồn bên ngoài.
+
+Bên cạnh robot là 4 thẻ màu đại diện cho các phần thi:
+
+PHẦN I
+Chọn A B C D
+
+PHẦN II
+Đúng / Sai
+
+PHẦN III
+Ghi một số
+
+PHẦN IV
+Tự luận
+
+Sử dụng lần lượt các màu:
+- Phần I: xanh dương.
+- Phần II: xanh lá.
+- Phần III: cam.
+- Phần IV: tím.
+
+Các thẻ chỉ mang tính minh họa hoặc điều hướng tùy cấu hình.
+
+## 4.2. Cột bên phải
+
+Tạo một thẻ đăng nhập màu trắng, bo góc lớn, có bóng đổ nhẹ.
+
+Bên trong gồm:
+
+Nhãn:
+
+Số báo danh của em
+
+Ô nhập số báo danh lớn, căn giữa, viền xanh dương khi được chọn.
+
+Placeholder:
+
+VD: 012
+
+Cho phép nhập số báo danh có số 0 ở đầu.
+
+Vì vậy, số báo danh phải được xử lý dưới dạng chuỗi, không chuyển sang kiểu number.
+
+Tiếp theo là nhãn:
+
+Mã đề (cô ghi trên bảng)
+
+Hiển thị hai nút chọn mã đề:
+
+601
+Mã đề
+
+602
+Mã đề
+
+Hai nút đặt cạnh nhau, có nền trắng, viền xanh xám nhạt, bo góc lớn.
+
+Khi chọn mã đề:
+- Đổi viền sang xanh dương.
+- Có trạng thái được chọn rõ ràng.
+- Không cho phép chọn đồng thời cả hai mã đề.
+
+Nút chính ở cuối thẻ:
+
+BẮT ĐẦU LÀM BÀI ▶
+
+Nút có nền gradient xanh dương sang tím, chữ trắng, in hoa, đậm.
+
+Khi nhấn:
+1. Kiểm tra số báo danh đã nhập.
+2. Kiểm tra mã đề đã chọn.
+3. Kiểm tra đề thi có dữ liệu.
+4. Nếu hợp lệ, chuyển sang màn hình làm bài.
+5. Nếu chưa hợp lệ, hiển thị thông báo dễ hiểu.
+
+Nếu chưa có danh sách học sinh, có thể cho phép nhập số báo danh tự do theo cấu hình của giáo viên.
+
+Không tự tạo cơ chế xác thực giả nhưng tuyên bố là xác thực bảo mật.
+
+## 4.3. Chân trang
+
+Hiển thị dòng chữ nhỏ:
+
+BẢN NHÁP — thầy/cô duyệt trước khi dùng · Phòng thi một file, không cần mạng
+
+Đây là thông báo mô tả trạng thái triển khai. Không được tuyên bố ứng dụng đã được kiểm định hoặc bảo mật nếu chưa thực hiện kiểm định thực tế.
+
+# PHẦN 5. MÀN HÌNH 2 – LÀM BÀI THI
+
+Đây là màn hình quan trọng nhất.
+
+Bố cục bám sát hình ảnh tham khảo số 2 và số 3.
+
+## 5.1. Thanh tiêu đề cố định phía trên
+
+Sử dụng thanh nền trắng, có viền dưới mảnh.
+
+Bên trái:
+- Biểu tượng dấu kiểm.
+- Tên bài kiểm tra.
+- Số báo danh.
+- Mã đề.
+
+Ví dụ:
+
+Tin học 6 — Kiểm tra giữa học kì I
+
+SBD 012 · Mã đề 601
+
+Bên phải:
+- Đồng hồ đếm ngược.
+- Nút NỘP BÀI màu cam hoặc đỏ cam.
+
+Đồng hồ hiển thị theo định dạng:
+
+45:00
+
+Thời lượng được lấy từ cấu hình đề thi.
+
+Đồng hồ giảm từng giây.
+
+Khi còn dưới 5 phút, đổi sang màu cảnh báo.
+
+Khi hết giờ:
+- Tự động khóa thao tác chỉnh sửa đáp án.
+- Tự động thực hiện quy trình nộp bài.
+- Hiển thị thông báo hết giờ.
+- Chỉ ghi nhận một lần nộp bài.
+- Không làm mất câu trả lời đã lưu.
+
+Không cho phép tải lại trang để đặt lại thời gian làm bài nếu phiên thi đã được lưu.
+
+Lưu ý: Trong chế độ chỉ sử dụng LocalStorage, thời gian và dữ liệu vẫn có thể bị can thiệp từ trình duyệt. Không tuyên bố đây là cơ chế chống gian lận tuyệt đối.
+
+## 5.2. Bố cục hai cột
+
+Ở màn hình máy tính:
+
+- Cột trái rộng khoảng 260–280px.
+- Cột phải chiếm phần diện tích còn lại.
+- Có khoảng cách 20–24px giữa hai cột.
+
+Cột trái là thanh điều hướng bài thi.
+
+Cột phải là nội dung câu hỏi.
+
+Trên điện thoại, chuyển thanh điều hướng thành bảng điều hướng có thể mở hoặc đóng.
+
+# PHẦN 6. THANH ĐIỀU HƯỚNG BÊN TRÁI
+
+## 6.1. Các phần thi
+
+Tạo 4 nút:
+
+Phần I
+Phần II
+Phần III
+Phần IV
+
+Bên phải mỗi nút hiển thị tiến độ.
+
+Ví dụ:
+
+Phần I 5/12
+
+Phần II 0/2
+
+Phần III 2/4
+
+Phần IV 0/3
+
+Số lượng câu hỏi phải được tính tự động từ dữ liệu đề thi.
+
+Không cố định các số trên nếu đề có cấu trúc khác.
+
+Khi nhấn vào tên phần:
+- Chuyển đến phần tương ứng.
+- Đánh dấu phần đang chọn bằng viền xanh dương.
+- Cập nhật nội dung ở khu vực bên phải.
+
+## 6.2. Bản đồ câu hỏi
+
+Tiêu đề:
+
+Bản đồ câu hỏi
+
+Hiển thị danh sách câu hỏi dưới dạng các nút vuông bo góc.
+
+Ví dụ:
+
+1 2 3 4 5
+6 7 8 9 10
+11 12 II.1 II.2 III.1
+III.2 III.3 III.4 IV.1 IV.2
+IV.3
+
+Tên nút phải được tạo động theo cấu trúc đề thi.
+
+Quy tắc màu:
+
+- Xanh lá: câu đã có câu trả lời hợp lệ.
+- Vàng nhạt: câu chưa hoàn thành đầy đủ.
+- Trắng hoặc xám nhạt: câu chưa làm.
+- Viền xanh dương: câu đang được xem.
+- Viền cam: câu cần chú ý hoặc câu đang được đánh dấu xem lại.
+
+Không dùng màu sắc làm dấu hiệu duy nhất. Cần có chú giải và thuộc tính hỗ trợ người dùng.
+
+Khi nhấn một nút câu hỏi:
+- Tự động chuyển đến câu hỏi tương ứng.
+- Cuộn nội dung đến vị trí câu hỏi.
+- Đánh dấu câu đang chọn.
+
+Có chú giải:
+
+Đã làm xong
+Làm chưa hết
+Chưa làm
+
+## 6.3. Đánh dấu xem lại
+
+Cho phép học sinh đánh dấu một câu để quay lại sau.
+
+Trạng thái này độc lập với trạng thái đã trả lời.
+
+Có thể sử dụng biểu tượng đánh dấu hoặc viền màu khác.
+
+# PHẦN 7. PHẦN I – TRẮC NGHIỆM MỘT ĐÁP ÁN
+
+Tiêu đề:
+
+Phần I. Chọn một đáp án đúng
+
+Dòng hướng dẫn:
+
+Mỗi câu chỉ có MỘT đáp án đúng. Em bấm vào đáp án em chọn. Muốn đổi thì bấm đáp án khác.
+
+Mỗi câu hỏi được hiển thị trong một thẻ nền trắng.
+
+Ví dụ:
+
+Câu 1. Thông tin là gì?
+
+Hiển thị 4 phương án A, B, C, D.
+
+Mỗi phương án là một thẻ có:
+- Ký hiệu A/B/C/D.
+- Nội dung đáp án.
+- Nền trắng.
+- Viền xám nhạt.
+
+Khi học sinh chọn:
+- Viền đổi sang xanh dương.
+- Ký hiệu đáp án được tô màu.
+- Lưu câu trả lời.
+- Cập nhật bản đồ câu hỏi.
+
+Mỗi câu chỉ được chọn một phương án.
+
+Học sinh được thay đổi đáp án trước khi nộp bài.
+
+Không hiển thị đáp án đúng hoặc lời giải trong thời gian làm bài.
+
+# PHẦN 8. PHẦN II – TRẮC NGHIỆM ĐÚNG/SAI
+
+Tiêu đề:
+
+Phần II. Trắc nghiệm Đúng/Sai
+
+Mỗi câu có thể chứa một đoạn thông tin và nhiều ý nhỏ.
+
+Ví dụ:
+
+Câu 1.
+
+a) Máy tính có thể xử lý dữ liệu.
+
+b) Thông tin và dữ liệu luôn hoàn toàn giống nhau.
+
+Với mỗi ý, hiển thị hai lựa chọn:
+- Đúng.
+- Sai.
+
+Cho phép chọn độc lập từng ý.
+
+Một câu chỉ được đánh dấu hoàn thành khi tất cả các ý bắt buộc đã được trả lời.
+
+Nếu còn thiếu một ý:
+- Trạng thái câu chuyển sang chưa hoàn thành.
+- Bản đồ câu hỏi sử dụng màu vàng nhạt.
+
+Dữ liệu phải hỗ trợ nhiều câu đúng/sai và số lượng ý thay đổi theo từng câu.
+
+# PHẦN 9. PHẦN III – CÂU HỎI GHI MỘT SỐ
+
+Tiêu đề:
+
+Phần III. Câu hỏi trả lời ngắn
+
+Hiển thị câu hỏi và ô nhập câu trả lời.
+
+Ví dụ:
+
+Câu 1. Một tuần có bao nhiêu ngày?
+
+Ô nhập cho phép học sinh nhập đáp án.
+
+Cấu hình từng câu có thể quy định:
+- Số nguyên.
+- Số thập phân.
+- Chuỗi văn bản ngắn.
+- Giá trị có dấu phẩy thập phân theo quy ước của đề.
+
+Kiểm tra dữ liệu nhập phù hợp với loại câu hỏi.
+
+Không tự động coi mọi giá trị nhập được là đúng.
+
+Hỗ trợ cấu hình đáp án chuẩn và các đáp án tương đương.
+
+Đối với số thập phân, cho phép giáo viên cấu hình sai số chấp nhận nếu cần.
+
+Khi học sinh nhập đáp án:
+- Lưu câu trả lời.
+- Cập nhật tiến độ.
+- Hiển thị trạng thái đã nhập.
+
+# PHẦN 10. PHẦN IV – TỰ LUẬN
+
+Thiết kế theo hình ảnh tham khảo số 3.
+
+Tiêu đề:
+
+Phần IV. Tự luận
+
+Dòng hướng dẫn:
+
+Em gõ câu trả lời vào ô. Viết ngắn gọn, đủ ý là được.
+
+Hiển thị một dải thông báo màu vàng nhạt:
+
+Máy chưa gõ được tiếng Việt có dấu thì em gõ không dấu cũng được, cô vẫn chấm.
+
+Thông báo này phải có thể bật/tắt trong cấu hình.
+
+Mỗi câu tự luận hiển thị trong một thẻ riêng.
+
+Ví dụ:
+
+Câu 1 (1,0 điểm). Trước giờ tan học, bạn Nam xem điện thoại thấy dòng chữ: "Chiều nay có mưa".
+
+a) Em chọn một trong ba từ: dữ liệu, thông tin, vật mang tin.
+
+Chiếc điện thoại là:
+
+Hiển thị một danh sách thả xuống với các lựa chọn:
+- Dữ liệu.
+- Thông tin.
+- Vật mang tin.
+
+Tiếp theo:
+
+Dòng chữ "Chiều nay có mưa" hiện trên điện thoại là:
+
+Hiển thị danh sách thả xuống.
+
+Tiếp theo:
+
+Điều Nam hiểu được: "Lúc về nhà có thể bị ướt mưa" là:
+
+Hiển thị danh sách thả xuống.
+
+Tiếp theo:
+
+b) Biết chiều nay có mưa, Nam nên làm gì? Em viết một việc.
+
+Hiển thị textarea nhiều dòng.
+
+Yêu cầu:
+- Hỗ trợ tiếng Việt có dấu.
+- Tự động lưu nội dung.
+- Giữ nội dung khi chuyển phần.
+- Giữ nội dung khi tải lại trang trong cùng phiên thi.
+- Hỗ trợ nhiều câu tự luận.
+- Hỗ trợ câu tự luận có nhiều ý nhỏ.
+- Hỗ trợ câu hỏi dạng chọn danh sách và nhập văn bản trong cùng một câu.
+
+Đối với câu tự luận mở:
+- Không mặc định tự động chấm chính xác như câu trắc nghiệm.
+- Có thể áp dụng bộ tiêu chí chấm do giáo viên cấu hình.
+- Nếu không thể xác định chắc chắn kết quả, chuyển sang trạng thái cần giáo viên chấm.
+
+# PHẦN 11. HỘP THOẠI XÁC NHẬN NỘP BÀI
+
+Khi học sinh nhấn nút NỘP BÀI, không nộp ngay lập tức.
+
+Hiển thị một hộp thoại ở giữa màn hình.
+
+Phần nền phía sau được làm tối nhẹ.
+
+Nội dung hộp thoại:
+
+Biểu tượng tài liệu có dấu kiểm.
+
+Tiêu đề:
+
+Em chắc chắn nộp bài?
+
+Nếu còn câu chưa trả lời, hiển thị:
+
+Em còn 14 câu chưa làm xong:
+
+Con số phải được tính tự động.
+
+Bên dưới là các nhãn câu hỏi chưa hoàn thành, ví dụ:
+
+I.4  I.7  I.8  I.9  I.10
+II.1  II.2  III.3  III.4
+IV.1  IV.2  IV.3
+
+Các nhãn này được tạo động từ dữ liệu thực tế.
+
+Hai nút:
+
+QUAY LẠI LÀM TIẾP
+
+NỘP BÀI NGAY
+
+Nút QUAY LẠI LÀM TIẾP:
+- Đóng hộp thoại.
+- Giữ nguyên mọi câu trả lời.
+- Cho phép tiếp tục làm bài.
+
+Nút NỘP BÀI NGAY:
+- Hiển thị xác nhận cuối cùng nếu cần.
+- Chuyển phiên thi sang trạng thái đã nộp.
+- Khóa chỉnh sửa câu trả lời.
+- Tính điểm các câu có thể chấm tự động.
+- Đánh dấu câu cần giáo viên chấm.
+- Chuyển sang màn hình kết quả.
+
+Nếu tất cả câu đã hoàn thành, vẫn hiển thị hộp thoại xác nhận nộp bài nhưng thông báo phù hợp.
+
+Phải ngăn việc nộp bài nhiều lần.
+
+# PHẦN 12. MÀN HÌNH KẾT QUẢ
+
+Sau khi nộp bài, hiển thị:
+
+CHÚC MỪNG EM ĐÃ HOÀN THÀNH BÀI THI!
+
+Thông tin:
+- Họ tên nếu có.
+- Số báo danh.
+- Mã đề.
+- Tên bài kiểm tra.
+- Thời gian bắt đầu.
+- Thời gian nộp.
+- Thời gian làm bài.
+
+Hiển thị:
+- Tổng số câu.
+- Số câu đã trả lời.
+- Số câu chưa trả lời.
+- Điểm tự động chấm được.
+- Số câu cần giáo viên chấm.
+
+Nếu toàn bộ bài có thể chấm tự động, hiển thị điểm tổng kết.
+
+Nếu còn câu tự luận cần chấm:
+- Ghi rõ điểm hiện tại là điểm tạm tính.
+- Không tự động công bố điểm cuối cùng khi chưa có đủ kết quả.
+- Chỉ hiển thị đáp án hoặc giải thích nếu giáo viên bật tùy chọn sau khi nộp bài.
+
+Có nút:
+
+XEM CHI TIẾT KẾT QUẢ
+
+Có nút:
+
+LÀM BÀI KHÁC
+
+Chỉ cho phép làm bài khác khi giáo viên cấu hình cho phép. Không tự động xóa dữ liệu bài đã nộp.
+
+# PHẦN 13. KHU VỰC QUẢN LÝ DÀNH CHO GIÁO VIÊN
+
+Tạo một khu vực riêng có tên:
+
+QUẢN LÝ PHÒNG THI
+
+Khu vực này không hiển thị trên màn hình làm bài của học sinh, nhưng phải có đường dẫn truy cập rõ ràng từ trang chính.
+
+Trong phiên bản mẫu, có thể sử dụng màn hình quản lý nội bộ và mã PIN do giáo viên tự thiết lập.
+
+Không coi mã PIN phía trình duyệt là cơ chế bảo mật mạnh. Nếu triển khai thi chính thức có yêu cầu bảo mật, cần xác thực và lưu dữ liệu ở máy chủ.
+
+## 13.1. Cấu hình đề thi
+
+Cho phép giáo viên chỉnh sửa:
+- Tên bài kiểm tra.
+- Môn học.
+- Khối lớp.
+- Tên trường.
+- Thời lượng.
+- Ngày kiểm tra.
+- Số lượng phần thi.
+- Số lượng câu hỏi.
+- Thang điểm.
+- Hướng dẫn làm bài.
+- Cho phép hoặc không cho phép làm lại.
+- Hiển thị hoặc ẩn điểm sau khi nộp.
+- Thời điểm công bố đáp án.
+
+## 13.2. Quản lý mã đề
+
+Cho phép tạo và chỉnh sửa các mã đề, ví dụ:
+- 601.
+- 602.
+
+Mỗi mã đề có bộ câu hỏi và đáp án riêng hoặc dùng chung một ngân hàng câu hỏi.
+
+Cho phép:
+- Thêm mã đề.
+- Sửa mã đề.
+- Nhân bản đề.
+- Chỉnh sửa câu hỏi.
+- Chỉnh sửa đáp án.
+- Thiết lập điểm từng câu.
+
+Không được tự ý xáo trộn thứ tự câu hỏi hoặc phương án nếu chưa có cấu hình cho phép.
+
+Nếu bật trộn câu hỏi hoặc đáp án, phải bảo đảm đáp án đúng vẫn khớp với phương án sau khi trộn.
+
+## 13.3. Quản lý ngân hàng câu hỏi
+
+Tạo chức năng:
+- Thêm câu hỏi.
+- Chỉnh sửa câu hỏi.
+- Xóa câu hỏi sau khi xác nhận.
+- Chọn phần thi.
+- Chọn loại câu hỏi.
+- Nhập nội dung câu hỏi.
+- Thêm hoặc xóa phương án.
+- Đặt đáp án đúng.
+- Nhập điểm.
+- Thêm hình minh họa nếu có.
+- Thiết lập lời giải.
+- Thiết lập tiêu chí chấm tự luận.
+
+Hỗ trợ 4 loại câu hỏi:
+1. Trắc nghiệm một đáp án.
+2. Đúng/Sai nhiều ý.
+3. Trả lời ngắn.
+4. Tự luận.
+
+## 13.4. Nhập và xuất đề thi
+
+Cho phép giáo viên:
+- Nhập câu hỏi từ tệp JSON.
+- Xuất đề thi ra JSON.
+- Sao lưu toàn bộ cấu hình.
+- Khôi phục cấu hình từ bản sao lưu.
+- Xuất danh sách kết quả thành CSV.
+- Tải xuống kết quả làm bài.
+
+Khi nhập dữ liệu:
+- Kiểm tra cấu trúc tệp.
+- Thông báo lỗi rõ ràng nếu dữ liệu không hợp lệ.
+- Không ghi đè dữ liệu hiện có khi chưa có xác nhận.
+
+Nếu có thể hỗ trợ nhập Excel, hãy xây dựng thêm chức năng nhập từ tệp XLSX với mẫu cột rõ ràng.
+
+Không tuyên bố hỗ trợ nhập Word hoặc Excel nếu chưa triển khai và kiểm thử thực tế.
+
+## 13.5. Danh sách học sinh và kết quả
+
+Cho phép giáo viên xem bảng kết quả với các cột:
+- STT.
+- Số báo danh.
+- Họ tên.
+- Lớp.
+- Mã đề.
+- Thời gian làm bài.
+- Số câu đã trả lời.
+- Điểm tự động chấm.
+- Điểm tự luận.
+- Tổng điểm.
+- Trạng thái chấm.
+- Trạng thái nộp bài.
+
+Cho phép:
+- Tìm kiếm.
+- Lọc theo lớp.
+- Lọc theo mã đề.
+- Lọc theo trạng thái.
+- Sắp xếp theo điểm.
+- Xuất kết quả.
+
+Nếu giáo viên cần nhập điểm tự luận, tạo giao diện chấm bài riêng, cho phép xem câu trả lời của học sinh, tiêu chí chấm và nhập điểm.
+
+# PHẦN 14. DỮ LIỆU MẪU
+
+Khởi tạo một đề thi mẫu:
+
+Tên đề:
+
+Tin học 6 — Kiểm tra giữa học kì I
+
+Thời lượng:
+
+45 phút
+
+Mã đề:
+- 601.
+- 602.
+
+Dữ liệu minh họa gồm 4 phần:
+
+Phần I: 12 câu trắc nghiệm một đáp án.
+
+Phần II: 2 câu đúng/sai, mỗi câu có thể gồm nhiều ý.
+
+Phần III: 4 câu trả lời ngắn.
+
+Phần IV: 3 câu tự luận.
+
+Tổng số câu theo cấu trúc mẫu là 21 câu, không tính riêng các ý nhỏ.
+
+Hãy tạo nội dung mẫu phù hợp với môn Tin học lớp 6.
+
+Chủ đề gợi ý:
+- Thông tin và dữ liệu.
+- Vật mang tin.
+- Thu thập và xử lý thông tin.
+- Biểu diễn thông tin.
+- Máy tính trong đời sống.
+- An toàn và trách nhiệm khi sử dụng thông tin.
+
+Câu hỏi phải có nội dung giáo dục phù hợp lứa tuổi.
+
+Tạo đáp án chuẩn cho các câu có thể chấm tự động.
+
+Các câu tự luận phải có hướng dẫn hoặc tiêu chí chấm để giáo viên tham khảo.
+
+Không dùng một đáp án đúng chung cho mọi câu.
+
+Mã đề 601 và 602 phải được phân biệt rõ trong dữ liệu.
+
+Nội dung đề mẫu chỉ nhằm minh họa chức năng. Giáo viên phải có khả năng chỉnh sửa trước khi sử dụng chính thức.
+
+# PHẦN 15. KIẾN TRÚC DỮ LIỆU
+
+Thiết kế mô hình dữ liệu có cấu trúc rõ ràng.
+
+Mỗi đề thi gồm:
+- examId.
+- title.
+- subject.
+- grade.
+- durationMinutes.
+- totalPoints.
+- instructions.
+- sections.
+- versions.
+
+Mỗi phần thi gồm:
+- sectionId.
+- title.
+- questionType.
+- questions.
+- sectionOrder.
+
+Mỗi câu hỏi gồm:
+- questionId.
+- questionType.
+- content.
+- points.
+- options nếu có.
+- correctAnswer nếu có.
+- subQuestions nếu có.
+- gradingCriteria nếu có.
+- explanation nếu có.
+- order.
+
+Mỗi phiên làm bài gồm:
+- attemptId.
+- examId.
+- examVersionId.
+- studentId hoặc studentCode.
+- examCode.
+- startedAt.
+- submittedAt.
+- answers.
+- markedQuestions.
+- status.
+- score.
+- gradingStatus.
+
+Đáp án và trạng thái làm bài phải được lưu độc lập với giao diện.
+
+Không để việc chuyển phần thi làm mất dữ liệu.
+
+Sử dụng TypeScript interface hoặc type để bảo đảm kiểu dữ liệu nhất quán.
+
+# PHẦN 16. QUY TẮC CHẤM ĐIỂM
+
+Cần có hệ thống chấm điểm có thể cấu hình.
+
+Đối với trắc nghiệm một đáp án:
+- So sánh đáp án học sinh với đáp án chuẩn.
+- Tính điểm theo điểm từng câu.
+
+Đối với đúng/sai:
+- Cho phép cấu hình chấm điểm theo từng ý.
+- Có thể chấm theo số ý đúng hoặc theo quy tắc riêng.
+- Không mặc định mọi câu đều có cùng cách tính điểm.
+
+Đối với trả lời ngắn:
+- Hỗ trợ chuẩn hóa khoảng trắng.
+- Có thể cấu hình không phân biệt chữ hoa/chữ thường.
+- Có thể cấu hình nhiều đáp án được chấp nhận.
+- Với câu hỏi số, có thể cấu hình sai số cho phép.
+
+Đối với tự luận:
+- Mặc định yêu cầu giáo viên chấm.
+- Cho phép giáo viên nhập điểm.
+- Hỗ trợ tiêu chí chấm.
+- Không tự động gán điểm tối đa khi học sinh có nhập nội dung.
+
+Tổng điểm phải được tính theo thang điểm cấu hình.
+
+Kiểm tra để tránh tính điểm hai lần hoặc vượt quá điểm tối đa của đề.
+
+# PHẦN 17. LƯU TRỮ VÀ TỰ ĐỘNG LƯU
+
+Trong phiên bản không có máy chủ:
+- Lưu cấu hình đề thi trong LocalStorage.
+- Lưu câu trả lời của học sinh trong LocalStorage.
+- Lưu mã đề và số báo danh.
+- Lưu thời điểm bắt đầu.
+- Lưu trạng thái đã nộp.
+- Lưu kết quả chấm tự động.
+- Lưu trạng thái đánh dấu xem lại.
+
+Tự động lưu khi:
+- Học sinh chọn đáp án.
+- Học sinh thay đổi lựa chọn đúng/sai.
+- Học sinh nhập câu trả lời ngắn.
+- Học sinh nhập nội dung tự luận.
+- Học sinh chuyển câu hoặc chuyển phần.
+
+Hiển thị thông báo trạng thái:
+
+Đã lưu câu trả lời.
+
+Không làm mất dữ liệu khi chuyển qua lại giữa các phần.
+
+Nếu tải lại trang:
+- Khôi phục phiên làm bài còn hiệu lực.
+- Tính thời gian còn lại dựa trên thời điểm bắt đầu và thời lượng bài thi.
+- Nếu phiên đã nộp, không cho phép sửa đáp án.
+- Nếu hết giờ, thực hiện quy trình kết thúc bài.
+
+Lưu ý quan trọng:
+
+LocalStorage chỉ lưu dữ liệu trên trình duyệt hiện tại. Nó không tự đồng bộ dữ liệu giữa các máy tính và không phải cơ chế bảo mật chống gian lận.
+
+Trong phần hướng dẫn triển khai, phải nêu rõ giới hạn này.
+
+# PHẦN 18. YÊU CẦU TRẢI NGHIỆM NGƯỜI DÙNG
+
+Ứng dụng phải:
+- Hiển thị thông báo dễ hiểu bằng tiếng Việt.
+- Có trạng thái tải dữ liệu khi cần.
+- Có thông báo lỗi khi thao tác không hợp lệ.
+- Không làm mới trang khi chuyển câu hỏi.
+- Không mất dữ liệu khi chuyển phần.
+- Có xác nhận trước thao tác xóa.
+- Có xác nhận trước khi nộp bài.
+- Có thể dùng bằng bàn phím.
+- Có viền focus dễ nhìn.
+- Có nhãn cho các trường nhập liệu.
+- Hỗ trợ tiếng Việt có dấu.
+- Có bố cục dễ đọc với học sinh lớp 6.
+- Không hiển thị đáp án đúng trước khi được phép.
+- Không tự động đóng trình duyệt.
+- Không yêu cầu học sinh cài phần mềm bổ sung.
+
+Tạo trạng thái hiển thị phù hợp cho:
+- Đã chọn đáp án.
+- Đang lưu.
+- Đã lưu.
+- Chưa làm.
+- Đã làm.
+- Đang đánh dấu xem lại.
+- Đã nộp bài.
+
+# PHẦN 19. YÊU CẦU RESPONSIVE
+
+Trên màn hình máy tính:
+- Giữ bố cục hai cột như hình tham khảo.
+- Bản đồ câu hỏi nằm bên trái.
+- Nội dung câu hỏi nằm bên phải.
+
+Trên máy tính bảng:
+- Thu hẹp cột điều hướng.
+- Bảo đảm nội dung không bị tràn.
+
+Trên điện thoại:
+- Thanh tiêu đề thu gọn.
+- Đồng hồ và nút nộp bài vẫn dễ nhìn.
+- Bản đồ câu hỏi có thể mở hoặc thu gọn.
+- Phương án trả lời xếp theo cột nếu cần.
+- Ô nhập liệu đủ rộng.
+- Không có thanh cuộn ngang không cần thiết.
+
+# PHẦN 20. YÊU CẦU VỀ MÃ NGUỒN
+
+Tổ chức component rõ ràng, ví dụ:
+
+App
+LoginScreen
+ExamHeader
+ExamLayout
+SectionNavigation
+QuestionMap
+QuestionCard
+MultipleChoiceQuestion
+TrueFalseQuestion
+ShortAnswerQuestion
+EssayQuestion
+SubmitConfirmationModal
+ResultScreen
+TeacherDashboard
+ExamEditor
+QuestionEditor
+StudentResults
+GradingScreen
+
+Có thể điều chỉnh tên component nếu cần nhưng phải giữ kiến trúc dễ hiểu.
+
+Tách riêng:
+- Dữ liệu đề thi.
+- Logic làm bài.
+- Logic chấm điểm.
+- Logic lưu trữ.
+- Logic điều hướng.
+- Thành phần giao diện.
+
+Tránh viết toàn bộ ứng dụng trong một component duy nhất.
+
+Không sử dụng dữ liệu giả để làm cho các nút có vẻ hoạt động trong khi chức năng thực tế chưa được triển khai.
+
+Mọi nút có chức năng phải thực hiện đúng chức năng đó.
+
+Nếu chưa triển khai được một chức năng nâng cao, phải thông báo rõ trong giao diện quản lý hoặc tài liệu hướng dẫn, không được giả lập kết quả thành công.
+
+# PHẦN 21. KIỂM THỬ
+
+Sau khi xây dựng ứng dụng, tự kiểm tra các trường hợp:
+
+1. Không nhập số báo danh nhưng nhấn bắt đầu.
+2. Không chọn mã đề nhưng nhấn bắt đầu.
+3. Nhập số báo danh có số 0 ở đầu.
+4. Chọn mã đề 601.
+5. Chọn mã đề 602.
+6. Chuyển qua lại giữa 4 phần thi.
+7. Chọn và đổi đáp án trắc nghiệm.
+8. Trả lời đúng/sai từng ý.
+9. Nhập câu trả lời ngắn.
+10. Nhập câu tự luận có dấu tiếng Việt.
+11. Đánh dấu câu cần xem lại.
+12. Tải lại trang trong khi đang làm bài.
+13. Kiểm tra đồng hồ sau khi tải lại trang.
+14. Nhấn nộp bài khi còn câu chưa làm.
+15. Quay lại làm tiếp từ hộp thoại xác nhận.
+16. Nộp bài khi tất cả câu đã hoàn thành.
+17. Hết giờ tự động nộp bài.
+18. Kiểm tra tính điểm.
+19. Kiểm tra các câu tự luận cần giáo viên chấm.
+20. Xuất dữ liệu kết quả.
+21. Nhập lại dữ liệu đề thi từ tệp JSON.
+22. Kiểm tra hiển thị trên điện thoại.
+23. Kiểm tra việc nộp bài nhiều lần.
+24. Kiểm tra việc tải lại trang sau khi đã nộp bài.
+
+Sửa các lỗi phát hiện được trước khi kết thúc.
+
+# PHẦN 22. THỨ TỰ THỰC HIỆN
+
+Hãy triển khai theo thứ tự:
+
+Bước 1. Phân tích hình ảnh tham khảo.
+
+Bước 2. Thiết kế giao diện màn hình đăng nhập.
+
+Bước 3. Xây dựng màn hình làm bài với bố cục hai cột.
+
+Bước 4. Xây dựng bản đồ câu hỏi và điều hướng.
+
+Bước 5. Xây dựng đủ 4 loại câu hỏi.
+
+Bước 6. Xây dựng đồng hồ và tự động lưu bài.
+
+Bước 7. Xây dựng hộp thoại xác nhận nộp bài.
+
+Bước 8. Xây dựng hệ thống chấm điểm và màn hình kết quả.
+
+Bước 9. Xây dựng khu vực quản lý dành cho giáo viên.
+
+Bước 10. Xây dựng nhập/xuất dữ liệu.
+
+Bước 11. Kiểm thử các chức năng và sửa lỗi.
+
+Bước 12. Hoàn thiện giao diện responsive.
+
+Ưu tiên hoàn thiện một ứng dụng chạy được, không phải chỉ tạo ảnh minh họa hoặc bản mô phỏng giao diện.
+
+# KẾT QUẢ MONG MUỐN
+
+Hãy tạo ứng dụng web hoàn chỉnh với giao diện tiếng Việt, dữ liệu mẫu, đầy đủ các màn hình và các chức năng tương tác nêu trên.
+
+Giao diện phải bám sát hình ảnh tham khảo, đặc biệt là:
+- Màn hình vào phòng thi với hai cột.
+- Thẻ nhập số báo danh và chọn mã đề.
+- Thanh tiêu đề có đồng hồ và nút nộp bài.
+- Cột trái chứa điều hướng 4 phần thi và bản đồ câu hỏi.
+- Thẻ câu hỏi nền trắng.
+- Hộp thoại xác nhận nộp bài.
+- Màn hình tự luận với các ô chọn và textarea.
+
+Hãy ưu tiên độ chính xác của bố cục, tính ổn định, tính dễ sử dụng và khả năng chỉnh sửa của giáo viên.
+
+Bắt đầu xây dựng ứng dụng ngay.
